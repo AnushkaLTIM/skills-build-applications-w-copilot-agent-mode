@@ -179,7 +179,7 @@ app.get('/api/stats', async (req: Request, res: Response) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0',() => {
   console.log(`OctoFit API running on ${apiBaseUrl}`);
   console.log(`Health check: ${apiBaseUrl}/api/health`);
 });
