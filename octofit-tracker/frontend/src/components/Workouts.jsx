@@ -9,7 +9,7 @@ function Workouts() {
   useEffect(() => {
     const fetchWorkouts = async () => {
       setLoading(true)
-      const endpoint = getApiEndpoint('workouts')
+      const endpoint = `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts`;
       const { items, error: fetchError } = await fetchPaginatedData(endpoint)
 
       if (fetchError) {

@@ -9,7 +9,7 @@ function Users() {
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true)
-      const endpoint = getApiEndpoint('users')
+      const endpoint = `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users`;
       const { items, error: fetchError } = await fetchPaginatedData(endpoint)
 
       if (fetchError) {

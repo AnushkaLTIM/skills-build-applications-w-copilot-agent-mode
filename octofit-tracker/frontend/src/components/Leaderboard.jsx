@@ -9,7 +9,7 @@ function Leaderboard() {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       setLoading(true)
-      const endpoint = getApiEndpoint('leaderboard')
+      const endpoint = `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard`;
       const { items, error: fetchError } = await fetchPaginatedData(endpoint)
 
       if (fetchError) {
