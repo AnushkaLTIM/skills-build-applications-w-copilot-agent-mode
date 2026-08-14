@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getApiEndpoint, fetchPaginatedData } from '../utils/api'
+import { getApiBaseUrl, fetchPaginatedData } from '../utils/api'
 
 function Users() {
   const [users, setUsers] = useState([])
@@ -9,7 +9,7 @@ function Users() {
   useEffect(() => {
     const fetchUsers = async () => {
       setLoading(true)
-      const endpoint = getApiEndpoint('users')
+      const endpoint = `${getApiBaseUrl()}/users`
       const { items, error: fetchError } = await fetchPaginatedData(endpoint)
 
       if (fetchError) {
