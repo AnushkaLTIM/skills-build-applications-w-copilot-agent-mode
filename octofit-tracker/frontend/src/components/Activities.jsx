@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getApiEndpoint, fetchPaginatedData } from '../utils/api'
+import { getApiBaseUrl, fetchPaginatedData } from '../utils/api'
 
 function Activities() {
   const [activities, setActivities] = useState([])
@@ -9,7 +9,7 @@ function Activities() {
   useEffect(() => {
     const fetchActivities = async () => {
       setLoading(true)
-      const endpoint = getApiEndpoint('activities')
+      const endpoint = `${getApiBaseUrl()}/activities`
       const { items, error: fetchError } = await fetchPaginatedData(endpoint)
 
       if (fetchError) {

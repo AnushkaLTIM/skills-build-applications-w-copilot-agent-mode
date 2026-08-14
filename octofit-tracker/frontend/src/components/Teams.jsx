@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getApiEndpoint, fetchPaginatedData } from '../utils/api'
+import { getApiBaseUrl, fetchPaginatedData } from '../utils/api'
 
 function Teams() {
   const [teams, setTeams] = useState([])
@@ -9,7 +9,7 @@ function Teams() {
   useEffect(() => {
     const fetchTeams = async () => {
       setLoading(true)
-      const endpoint = getApiEndpoint('teams')
+      const endpoint = `${getApiBaseUrl()}/teams`
       const { items, error: fetchError } = await fetchPaginatedData(endpoint)
 
       if (fetchError) {
