@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getApiBaseUrl, fetchPaginatedData } from '../utils/api'
+import { getApiEndpoint, fetchPaginatedData } from '../utils/api'
 
 function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([])
@@ -9,7 +9,7 @@ function Leaderboard() {
   useEffect(() => {
     const fetchLeaderboard = async () => {
       setLoading(true)
-      const endpoint = `${getApiBaseUrl()}/leaderboard`
+      const endpoint = getApiEndpoint('leaderboard')
       const { items, error: fetchError } = await fetchPaginatedData(endpoint)
 
       if (fetchError) {

@@ -1,10 +1,19 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, NavLink } from 'react-router-dom'
 import './App.css'
 import Activities from './components/Activities'
 import Leaderboard from './components/Leaderboard'
 import Teams from './components/Teams'
 import Users from './components/Users'
 import Workouts from './components/Workouts'
+
+const navItems = [
+  { to: '/', label: 'Home' },
+  { to: '/activities', label: 'Activities' },
+  { to: '/workouts', label: 'Workouts' },
+  { to: '/teams', label: 'Teams' },
+  { to: '/users', label: 'Users' },
+  { to: '/leaderboard', label: 'Leaderboard' },
+]
 
 function App() {
   return (
@@ -14,12 +23,16 @@ function App() {
           <h1>OctoFit Tracker</h1>
         </div>
         <ul className="nav-links">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/activities">Activities</Link></li>
-          <li><Link to="/workouts">Workouts</Link></li>
-          <li><Link to="/teams">Teams</Link></li>
-          <li><Link to="/users">Users</Link></li>
-          <li><Link to="/leaderboard">Leaderboard</Link></li>
+          {navItems.map(({ to, label }) => (
+            <li key={to}>
+              <NavLink
+                to={to}
+                className={({ isActive }) => (isActive ? 'active' : undefined)}
+              >
+                {label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
 
